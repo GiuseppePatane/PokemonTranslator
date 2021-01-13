@@ -5,6 +5,11 @@ namespace PokemonTranslator.Core.Interfaces
 {
     public interface IPokemonClient
     {
-        public Task<PokemonRace> GetPokemonRaceAsync(string pokemon);
+        /// <summary>
+        /// Get the pokemon race description of the given pokemon name
+        /// </summary>
+        /// <param name="pokemon"></param>
+        /// <returns></returns>
+        public Task<PokemonRace> GetPokemonRaceAsync(string pokemonName);
     }
 }

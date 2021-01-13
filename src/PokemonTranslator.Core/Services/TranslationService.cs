@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using PokemonTranslator.Core.Exceptions;
 using PokemonTranslator.Core.Interfaces;
 using PokemonTranslator.Core.ReadModels;
 
@@ -16,8 +17,7 @@ namespace PokemonTranslator.Core.Services
         public async Task<PokemonTranslationReadModel> GetPokemonTranslationAsync(string pokemonName)
         {
             var pokemonRace = await _pokemonClient.GetPokemonRaceAsync(pokemonName);
-
-            return new PokemonTranslationReadModel() {Name = pokemonRace.Name};
+            return new PokemonTranslationReadModel() {Name = pokemonRace.Name,Description = pokemonRace.Description};
 
         }
     }

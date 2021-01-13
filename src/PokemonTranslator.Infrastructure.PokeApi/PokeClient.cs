@@ -1,7 +1,11 @@
-﻿using System.Linq;
+﻿using System;
+using System.ComponentModel;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using PokeApiNet;
 using PokemonTranslator.Core.Domain;
+using PokemonTranslator.Core.Exceptions;
 using PokemonTranslator.Core.Interfaces;
 
 namespace PokemonTranslator.Infrastructure.PokeApi
@@ -15,28 +19,25 @@ namespace PokemonTranslator.Infrastructure.PokeApi
             _pokeApiClient = pokeApiClient;
         }
 
+        /// <summary>
+        /// Get Pokemon Race Information using  PokeApiClient
+        /// status code not found  will throw  an PokemonNotFoundException
+        /// </summary>
+        /// <param name="pokemon"></param>
+        /// <returns></returns>
+        /// <exception cref="PokemonNotFoundException"></exception>
         public async Task<PokemonRace> GetPokemonRaceAsync(string pokemon)
         {
-            var pokemonSpecies = await _pokeApiClient.GetResourceAsync<PokemonSpecies>(pokemon);
-
-            return pokemonSpecies.MapToPokemonRace();
-        }
-    }
-
-    public static class Mapper
-    {
-        public static PokemonRace MapToPokemonRace(this PokemonSpecies pokemonSpecies, string language = "en")
-        {
-            var description = pokemonSpecies.FlavorTextEntries
-                .Where(flavorTexts => flavorTexts.Language.Name == language)
-                .Select(f => f.FlavorText);
-
-            return new PokemonRace()
+            try
             {
-                Id = pokemonSpecies.Id,
-                Name = pokemonSpecies.Name,
-                Description = "description"
-            };
+                var pokemonSpecies = await _pokeApiClient.GetResourceAsync<PokemonSpecies>(pokemon.ToLower().Trim());
+                var t=  pokemonSpecies?.MapToPokemonRace();
+                return t;
+            }
+            catch (HttpRequestException e)  when( e.StatusCode == HttpStatusCode.NotFound)
+            {
+                throw new PokemonNotFoundException();
+            }
         }
     }
 }
