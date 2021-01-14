@@ -8,7 +8,7 @@ using PokemonTranslator.Core.Domain;
 using PokemonTranslator.Core.Exceptions;
 using PokemonTranslator.Core.Interfaces;
 
-namespace PokemonTranslator.Infrastructure.PokeApi
+namespace PokemonTranslator.Infrastructure.PokemonCient
 {
     public class PokeClient : IPokemonClient
     {
@@ -31,8 +31,7 @@ namespace PokemonTranslator.Infrastructure.PokeApi
             try
             {
                 var pokemonSpecies = await _pokeApiClient.GetResourceAsync<PokemonSpecies>(pokemon.ToLower().Trim());
-                var t=  pokemonSpecies?.MapToPokemonRace();
-                return t;
+                return pokemonSpecies?.MapToPokemonRace();
             }
             catch (HttpRequestException e)  when( e.StatusCode == HttpStatusCode.NotFound)
             {

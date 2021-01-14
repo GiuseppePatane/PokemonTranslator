@@ -1,4 +1,3 @@
-using System.Net.Http;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,7 +6,7 @@ using PokemonTranslator.Core.Interfaces;
 using PokemonTranslator.Infrastructure;
 using Xunit;
 
-namespace PokemonTranslator.IntegrationTests.Infrastructure.PokeApi
+namespace PokemonTranslator.IntegrationTests.Infrastructure.PokemonClient
 {
     public class PokemonClientIntegrationTest
     {

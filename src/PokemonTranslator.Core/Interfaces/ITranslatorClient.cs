@@ -6,6 +6,6 @@ namespace PokemonTranslator.Core.Interfaces
 {
     public interface ITranslatorClient
     {
-        public Task<PokemonTranslationReadModel> GetPokemonTranslation(PokemonRace pokemonRace);
+        public Task<string> GetTranslation(string text);
     }
 }

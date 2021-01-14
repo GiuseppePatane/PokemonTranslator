@@ -5,7 +5,7 @@ using PokeApiNet;
 using PokemonTranslator.Core.Domain;
 using PokemonTranslator.Core.Exceptions;
 
-namespace PokemonTranslator.Infrastructure.PokeApi
+namespace PokemonTranslator.Infrastructure.PokemonCient
 {
     public static class PokemonSpeciesExtensions
     {
@@ -25,7 +25,9 @@ namespace PokemonTranslator.Infrastructure.PokeApi
                 ? new List<string>() 
                 : pokemonSpecies.FlavorTextEntries
                     .Where(flavorTexts => flavorTexts.Language.Name == language)
-                    .Select(f => Regex.Replace(f.FlavorText, @"\t|\n|\r|\f", " ").Trim()).ToList();
+                    .Take(1)
+                    .Select(f =>  Regex.Replace(f.FlavorText, @"\t|\n|\r|\f", " ").Trim())
+                    .ToList();
             var description = descriptions.Any() ? string.Join( "", descriptions) : string.Empty;
             return PokemonRace.Create(pokemonSpecies.Id, pokemonSpecies.Name, description);
         }

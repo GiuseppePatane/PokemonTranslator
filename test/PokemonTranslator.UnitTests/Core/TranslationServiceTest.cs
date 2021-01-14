@@ -11,10 +11,11 @@ namespace PokemonTranslator.UnitTests.Core
     public class TranslationServiceTest
     {
         private readonly Mock<IPokemonClient> _pokemonClientMock;
-
+        private readonly Mock<ITranslatorClient> _translatorClient;
         public TranslationServiceTest()
         {
             _pokemonClientMock = new Mock<IPokemonClient>();
+            _translatorClient = new Mock<ITranslatorClient>();
         }
 
         [Fact]
@@ -26,7 +27,7 @@ namespace PokemonTranslator.UnitTests.Core
             _pokemonClientMock
                 .Setup(x => x.GetPokemonRaceAsync(pokemonName))
                 .ReturnsAsync(PokemonRace.Create(pokemonId, pokemonName, description));
-            var service = new TranslatorService(_pokemonClientMock.Object);
+            var service = new TranslatorService(_pokemonClientMock.Object,_translatorClient.Object);
             var response = await service.GetPokemonTranslationAsync(pokemonName);
             response.Should().NotBeNull();
             response.Name.Should().Be(pokemonName);
