@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7FF1510E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonTranslator.Infrastructure.ShakespeareClient", "src\PokemonTranslator.Infrastructure.ShakespeareClient\PokemonTranslator.Infrastructure.ShakespeareClient.csproj", "{4B5D6F9A-87FD-4F32-BD60-4CBD3CB08B49}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonTranslator.FunctionalTests", "test\PokemonTranslator.FunctionalTests\PokemonTranslator.FunctionalTests.csproj", "{F4EB6323-3E6F-457D-B811-48B528B7DB04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,10 @@ Global
 		{4B5D6F9A-87FD-4F32-BD60-4CBD3CB08B49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B5D6F9A-87FD-4F32-BD60-4CBD3CB08B49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B5D6F9A-87FD-4F32-BD60-4CBD3CB08B49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4EB6323-3E6F-457D-B811-48B528B7DB04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4EB6323-3E6F-457D-B811-48B528B7DB04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4EB6323-3E6F-457D-B811-48B528B7DB04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4EB6323-3E6F-457D-B811-48B528B7DB04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0C780324-C93E-4AE1-8E0A-41C5E773FB64} = {663F3975-CE7E-495F-BB8D-E5D772DCB628}
@@ -62,5 +68,6 @@ Global
 		{E57E8199-7DD4-40BD-BD8A-11FC2A29557D} = {7FF1510E-2C71-4A32-8B6A-8790E88ECDEF}
 		{96C9D3A3-0FFA-48C9-8F6E-3D1F833CD401} = {7FF1510E-2C71-4A32-8B6A-8790E88ECDEF}
 		{4B5D6F9A-87FD-4F32-BD60-4CBD3CB08B49} = {5ECC2273-17CA-40A3-8B35-B68AC3C9A0F7}
+		{F4EB6323-3E6F-457D-B811-48B528B7DB04} = {7FF1510E-2C71-4A32-8B6A-8790E88ECDEF}
 	EndGlobalSection
 EndGlobal

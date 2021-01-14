@@ -32,7 +32,7 @@ namespace PokemonTranslator.UnitTests.Core
             response.Should().NotBeNull();
             response.Name.Should().Be(pokemonName);
             response.Description.Should().Be(description);
-            response.Translation.Should().BeNullOrEmpty();
+            response.Translation.Should().Be("");
 
 
         }

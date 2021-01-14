@@ -1,4 +1,4 @@
-﻿namespace PokemonTranslator.Infrastructure.ShakespeareClient
+﻿namespace PokemonTranslator.Infrastructure.ShakespeareClient.Models
 {
     public class Success    {
         public int Total { get; set; } 

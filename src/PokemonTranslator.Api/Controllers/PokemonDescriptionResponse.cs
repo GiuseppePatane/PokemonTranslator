@@ -1,8 +1,4 @@
 ﻿namespace PokemonTranslator.Api.Controllers
 {
-    public class PokemonDescriptionResponse
-    {
-        public  string Name { get; set; }
-        public  string Description { get; set; }
-    }
+    public record PokemonDescriptionResponse (string Name, string Description);
 }

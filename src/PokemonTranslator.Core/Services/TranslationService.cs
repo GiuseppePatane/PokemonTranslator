@@ -18,7 +18,7 @@ namespace PokemonTranslator.Core.Services
         public async Task<PokemonTranslationReadModel> GetPokemonTranslationAsync(string pokemonName)
         {
             var pokemonRace = await _pokemonClient.GetPokemonRaceAsync(pokemonName);
-            var translation = await _translatorClient.GetTranslation(pokemonRace.Description);
+            var translation = await _translatorClient.GetTranslationAsync(pokemonRace.Description);
             return new PokemonTranslationReadModel(pokemonRace.Name, pokemonRace.Description, translation);
 
         }

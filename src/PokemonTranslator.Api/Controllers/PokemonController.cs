@@ -20,9 +20,10 @@ namespace PokemonTranslator.Api.Controllers
         }
 
         [HttpGet("pokemon/{name}")]
-        public async Task<PokemonTranslationReadModel> GetPokemonDescription(string name)
+        public async Task<PokemonDescriptionResponse> GetPokemonDescription(string name)
         {
-           return   await _translatorService.GetPokemonTranslationAsync(name);
+           var result=   await _translatorService.GetPokemonTranslationAsync(name);
+           return new PokemonDescriptionResponse(result.Name, result.Translation);
         }
     }
     
