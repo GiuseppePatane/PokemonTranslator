@@ -5,14 +5,14 @@ namespace PokemonTranslator.Infrastructure.ShakespeareClient.Models
     // Root myDeserializedClass = JsonSerializer.Deserialize<Root>(myJsonResponse);
     public class Error    {
         [JsonPropertyName("code")]
-        public int Code; 
+        public int Code { get; set; }
 
         [JsonPropertyName("message")]
-        public string Message; 
+        public string Message { get; set; }
     }
 
-    public class Root    {
+    public class ErrorResponse    {
         [JsonPropertyName("error")]
-        public Error Error; 
+        public Error Error { get; set; }
     }
 }

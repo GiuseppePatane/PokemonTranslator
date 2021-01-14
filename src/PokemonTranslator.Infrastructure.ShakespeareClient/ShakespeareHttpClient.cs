@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using PokemonTranslator.Core.Exceptions;
 using PokemonTranslator.Core.Interfaces;
@@ -22,34 +23,24 @@ namespace PokemonTranslator.Infrastructure.ShakespeareClient
 
         public async Task<string> GetTranslationAsync(string text)
         {
-            using (var response = await _client.GetAsync(UrlConfig.GetShakespeareTranslation(text)))
+            using var response = await _client.GetAsync(UrlConfig.GetShakespeareTranslation(text));
+            string content = null;
+            try
             {
-                HttpContent content = null;
-                try
-                {
-                    content = response.Content;
-                    response.EnsureSuccessStatusCode();
-                    var translationResponse = await content.ReadFromJsonAsync<TranslationResponse>();
-                    return translationResponse?.Contents?.Translated;
-                }
-                catch (HttpRequestException ex) when (content != null)
-                {
-                    var errorDetails = await content.ReadFromJsonAsync<Root>();
-                    throw new TooManyRequestException(errorDetails?.Error?.Message);
-                }
+                content = await response.Content.ReadAsStringAsync();
+                response.EnsureSuccessStatusCode();
+                var translationResponse = JsonSerializer.Deserialize<TranslationResponse>(content);
+                return translationResponse?.Contents?.Translated;
             }
-            // try
-            // {
-            //     var response = await _client.GetAsync(UrlConfig.GetShakespeareTranslation(text));
-            //     response.StatusCode.is;
-            //     var translationResponse = await response.Content.ReadFromJsonAsync<TranslationResponse>();
-            //     return translationResponse?.Contents?.Translated;
-            // }
-            // catch (HttpRequestException e) when (e.StatusCode == HttpStatusCode.TooManyRequests)
-            // {
-            //     var dio = e.Message;
-            //     throw;
-            // }
+            catch (HttpRequestException ex) when (content != null)
+            {
+                var errorDetails = JsonSerializer.Deserialize<ErrorResponse>(content);
+                throw new ShakespeareClientException(errorDetails?.Error?.Message);
+            }
+            catch (HttpRequestException ex) when (content == null)
+            {
+                throw new ShakespeareClientException(ex.Message);
+            }
         }
     }
 }

@@ -2,9 +2,9 @@
 
 namespace PokemonTranslator.Infrastructure.ShakespeareClient.Exceptions
 {
-    public class TooManyRequestException :CustomException
+    public class ShakespeareClientException :CustomException
     {
-        public TooManyRequestException(string message) : base("TooManyRequestErrorKey", message)
+        public ShakespeareClientException(string message) : base("ShakespeareClientErrorKey", message)
         {
         }
     }
