@@ -1,40 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using PokemonTranslator.Api.Models;
 using PokemonTranslator.Core.Interfaces;
-using PokemonTranslator.Core.ReadModels;
 
 namespace PokemonTranslator.Api.Controllers
 {
     [ApiController]
-    public class PokemonController : ControllerBase
+    public class ShakespeareController : ControllerBase
     {
         private readonly ITranslatorService _translatorService;
 
-        public PokemonController(ITranslatorService translatorService)
+        public ShakespeareController(ITranslatorService translatorService)
         {
             _translatorService = translatorService;
         }
 
-        
-        
         /// <summary>
-        /// Get the Shakespearean translation of the given pokemon name  
+        ///     Get the Shakespearean translation of the given pokemon name
         /// </summary>
         /// <remarks>
-        /// Sample request:
-        ///
+        ///     Sample request:
         ///     GET /pokemon/ditto
         ///     {
-        ///        "name": "ditto",
-        ///        "description": "description text"
+        ///     "name": "ditto",
+        ///     "description": "description text"
         ///     }
-        ///
         /// </remarks>
         /// <param name="name"> the pokemon name</param>
         /// <returns>The pokemon description </returns>
@@ -45,21 +35,19 @@ namespace PokemonTranslator.Api.Controllers
         /// <response code="500">internal server error</response>
         [Produces("application/json")]
         [HttpGet("pokemon/{name}")]
-        [ProducesResponseType(typeof(PokemonDescriptionResponse),200)]
-        [ProducesResponseType(404)]
-        [ProducesResponseType(typeof(ErrorsResponse),400)]
-        [ProducesResponseType(typeof(ErrorsResponse),429)]
-        [ProducesResponseType(typeof(ErrorsResponse),500)]
+        [ProducesResponseType(typeof(PokemonDescriptionResponse), 200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(typeof(ErrorsResponse), 400)]
+        [ProducesResponseType(typeof(ErrorsResponse), 429)]
+        [ProducesResponseType(typeof(ErrorsResponse), 500)]
         public async Task<PokemonDescriptionResponse> GetPokemonDescription(string name)
         {
-           var result=   await _translatorService.GetPokemonTranslationAsync(name);
-           return new PokemonDescriptionResponse
-           {
-               Name = result.Name,
-               Description = result.Translation
-           };
+            var result = await _translatorService.GetPokemonTranslationAsync(name);
+            return new PokemonDescriptionResponse
+            {
+                Name = result.Name,
+                Description = result.Translation
+            };
         }
     }
-    
- 
 }

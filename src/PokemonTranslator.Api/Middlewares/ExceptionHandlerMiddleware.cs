@@ -12,8 +12,9 @@ namespace PokemonTranslator.Api.Middlewares
 {
     public class ExceptionHandlerMiddleware
     {
-        private readonly RequestDelegate _next;
         private readonly ILogger _logger;
+        private readonly RequestDelegate _next;
+
         public ExceptionHandlerMiddleware(RequestDelegate next, ILogger<ExceptionHandlerMiddleware> logger)
         {
             _next = next;
@@ -38,39 +39,38 @@ namespace PokemonTranslator.Api.Middlewares
             context.Response.StatusCode = 400;
             switch (exception)
             {
-                 case PokemonNotFoundException:
-                 {
-                     context.Response.StatusCode = 204;
-                     return Task.CompletedTask;
-                 }
+                case PokemonNotFoundException:
+                {
+                    context.Response.StatusCode = 204;
+                    return Task.CompletedTask;
+                }
                 case HttpRequestException httpRequestException:
                 {
-                    _logger.LogError(httpRequestException,httpRequestException.Message);
-                    var errorsResponse = new ErrorsResponse()
+                    _logger.LogError(httpRequestException, httpRequestException.Message);
+                    var errorsResponse = new ErrorsResponse
                     {
-                        Errors = new List<Error>()
+                        Errors = new List<Error>
                         {
                             new()
                             {
-                                Code = "HttpRequestErrorKey", 
+                                Code = "HttpRequestErrorKey",
                                 Message = httpRequestException.Message
                             }
                         }
                     };
                     context.Response.StatusCode = 400;
                     return context.Response.WriteAsJsonAsync(errorsResponse);
-                    
-                } 
+                }
                 case ShakespeareClientException shakespeareClientException:
                 {
-                    _logger.LogError(shakespeareClientException,shakespeareClientException.Message);
-                    var errorsResponse = new ErrorsResponse()
+                    _logger.LogError(shakespeareClientException, shakespeareClientException.Message);
+                    var errorsResponse = new ErrorsResponse
                     {
-                        Errors = new List<Error>()
+                        Errors = new List<Error>
                         {
                             new()
                             {
-                                Code = shakespeareClientException.Code, 
+                                Code = shakespeareClientException.Code,
                                 Message = shakespeareClientException.Message
                             }
                         }
@@ -78,22 +78,22 @@ namespace PokemonTranslator.Api.Middlewares
                     return context.Response.WriteAsJsonAsync(errorsResponse);
                 }
                 default:
+                {
+                    _logger.LogError(exception, exception.Message);
+                    var defaultErrorResponse = new ErrorsResponse
                     {
-                        _logger.LogError(exception,exception.Message);
-                        var defaultErrorResponse = new ErrorsResponse()
+                        Errors = new List<Error>
                         {
-                            Errors = new List<Error>()
+                            new()
                             {
-                                new Error()
-                                {
-                                    Code = "InternalServerErrorKey", 
-                                    Message = "Internal server error"
-                                }
+                                Code = "InternalServerErrorKey",
+                                Message = "Internal server error"
                             }
-                        };
-                        context.Response.StatusCode = 500;
-                        return context.Response.WriteAsJsonAsync(defaultErrorResponse);
-                    }
+                        }
+                    };
+                    context.Response.StatusCode = 500;
+                    return context.Response.WriteAsJsonAsync(defaultErrorResponse);
+                }
             }
         }
     }

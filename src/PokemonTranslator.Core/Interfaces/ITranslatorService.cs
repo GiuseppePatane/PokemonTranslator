@@ -5,6 +5,6 @@ namespace PokemonTranslator.Core.Interfaces
 {
     public interface ITranslatorService
     {
-        Task<PokemonTranslationReadModel>  GetPokemonTranslationAsync(string pokemonName);
+        Task<PokemonTranslationReadModel> GetPokemonTranslationAsync(string pokemonName);
     }
 }

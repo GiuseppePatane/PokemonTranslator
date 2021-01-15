@@ -18,6 +18,5 @@ namespace PokemonTranslator.UnitTests.Domain
             pokemonRace.Name.Should().Be(pokemonName);
             pokemonRace.Description.Should().Be(description);
         }
-        
     }
 }

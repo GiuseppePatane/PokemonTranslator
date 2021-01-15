@@ -10,13 +10,13 @@ namespace PokemonTranslator.Infrastructure.ShakespeareClient
         {
             var queryString = BuildQueryString(new Dictionary<string, string>
             {
-                {"text", text},
+                {"text", text}
             });
             var url = $"translate/shakespeare.json?{queryString}";
             return url;
         }
-        
-        
+
+
         private static string BuildQueryString(Dictionary<string, string> keyValueQueryString)
         {
             var validParameters =

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Json;
+﻿using System.Net.Http;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using PokemonTranslator.Core.Exceptions;
 using PokemonTranslator.Core.Interfaces;
 using PokemonTranslator.Infrastructure.ShakespeareClient.Exceptions;
 using PokemonTranslator.Infrastructure.ShakespeareClient.Models;

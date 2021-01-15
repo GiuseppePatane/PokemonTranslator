@@ -1,6 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using PokeApiNet;
@@ -20,8 +18,8 @@ namespace PokemonTranslator.Infrastructure.PokemonCient
         }
 
         /// <summary>
-        /// Get Pokemon Race Information using  PokeApiClient
-        /// status code not found  will throw  an PokemonNotFoundException
+        ///     Get Pokemon Race Information using  PokeApiClient
+        ///     status code not found  will throw  an PokemonNotFoundException
         /// </summary>
         /// <param name="pokemon"></param>
         /// <returns></returns>
@@ -33,7 +31,7 @@ namespace PokemonTranslator.Infrastructure.PokemonCient
                 var pokemonSpecies = await _pokeApiClient.GetResourceAsync<PokemonSpecies>(pokemon.ToLower().Trim());
                 return pokemonSpecies?.MapToPokemonRace();
             }
-            catch (HttpRequestException e)  when( e.StatusCode == HttpStatusCode.NotFound)
+            catch (HttpRequestException e) when (e.StatusCode == HttpStatusCode.NotFound)
             {
                 throw new PokemonNotFoundException();
             }

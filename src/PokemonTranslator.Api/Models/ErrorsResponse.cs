@@ -5,10 +5,9 @@ namespace PokemonTranslator.Api.Models
 {
     public class Error
     {
-        [JsonPropertyName("code")]
-        public string Code { get; set; }
-        [JsonPropertyName("message")]
-        public string Message { get; set; }
+        [JsonPropertyName("code")] public string Code { get; set; }
+
+        [JsonPropertyName("message")] public string Message { get; set; }
     }
 
     public class ErrorsResponse
@@ -17,7 +16,7 @@ namespace PokemonTranslator.Api.Models
         {
             Errors = new List<Error>();
         }
-        [JsonPropertyName("errors")]
-        public List<Error> Errors { get; set; }
+
+        [JsonPropertyName("errors")] public List<Error> Errors { get; set; }
     }
 }

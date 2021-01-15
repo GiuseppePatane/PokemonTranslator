@@ -2,7 +2,7 @@
 
 namespace PokemonTranslator.Infrastructure.ShakespeareClient.Exceptions
 {
-    public class ShakespeareClientException :CustomException
+    public class ShakespeareClientException : CustomException
     {
         public ShakespeareClientException(string message) : base("ShakespeareClientErrorKey", message)
         {

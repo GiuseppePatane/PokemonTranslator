@@ -4,10 +4,6 @@ namespace PokemonTranslator.Core.Domain
 {
     public class PokemonRace
     {
-        public static PokemonRace Create(int id, string name, string description)
-        {
-            return new PokemonRace(id, name, description);
-        }
         private PokemonRace(int id, string name, string description)
         {
             if (id <= 0) throw new ArgumentOutOfRangeException(nameof(id));
@@ -18,8 +14,13 @@ namespace PokemonTranslator.Core.Domain
             Description = description;
         }
 
-        public  int Id { get; private set; }
-        public  string Name { get; private set; }
-        public  string Description { get; private set; }
+        public int Id { get; }
+        public string Name { get; }
+        public string Description { get; }
+
+        public static PokemonRace Create(int id, string name, string description)
+        {
+            return new(id, name, description);
+        }
     }
 }
