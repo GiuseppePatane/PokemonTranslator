@@ -41,7 +41,7 @@ namespace PokemonTranslator.FunctionalTests
                  response.EnsureSuccessStatusCode();
                  var pokemonDescriptionResponse = JsonSerializer.Deserialize<PokemonDescriptionResponse>(content);
                  pokemonDescriptionResponse.Should().NotBeNull();
-                 pokemonDescriptionResponse.Should().Be(expectedDescription);
+                 pokemonDescriptionResponse.Description.Should().Be(expectedDescription);
                  _testOutputHelper.WriteLine(pokemonDescriptionResponse.Description);
              }
              catch (HttpRequestException ex) when (content != null)
