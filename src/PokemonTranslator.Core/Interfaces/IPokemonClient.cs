@@ -6,7 +6,7 @@ namespace PokemonTranslator.Core.Interfaces
     public interface IPokemonClient
     {
         /// <summary>
-        /// Get the pokemon race description of the given pokemon name
+        ///     Get the pokemon race description of the given pokemon name
         /// </summary>
         /// <param name="pokemon"></param>
         /// <returns></returns>

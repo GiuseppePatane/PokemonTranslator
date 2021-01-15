@@ -1,13 +1,15 @@
 ﻿using System;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PokeApiNet;
 using PokemonTranslator.Core.Interfaces;
 using PokemonTranslator.Core.Services;
-using PokemonTranslator.Infrastructure.PokeApi;
+using PokemonTranslator.Infrastructure.PokemonCient;
+using PokemonTranslator.Infrastructure.ShakespeareClient;
 
 namespace PokemonTranslator.Infrastructure
 {
-    public static class  RegisterServices
+    public static class RegisterServices
     {
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
@@ -22,7 +24,16 @@ namespace PokemonTranslator.Infrastructure
         {
             services.AddTransient<PokeApiClient>();
             services.AddTransient<IPokemonClient, PokeClient>();
-             return services;
+            return services;
+        }
+
+        public static IServiceCollection AddHttpClients(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddHttpClient<ITranslatorClient, ShakespeareHttpClient>(client =>
+            {
+                client.BaseAddress = new Uri(configuration["HttpClients:ShakespeareApiBaseUrl"]);
+            });
+            return services;
         }
     }
 }

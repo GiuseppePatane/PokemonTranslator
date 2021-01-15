@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\PokemonTranslator.Infrastructure\PokemonTranslator.Infrastructure.csproj" />
+      <ProjectReference Include="..\..\src\PokemonTranslator.Api\PokemonTranslator.Api.csproj" />
     </ItemGroup>
 
 </Project>
