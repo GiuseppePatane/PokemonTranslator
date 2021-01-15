@@ -40,7 +40,7 @@ namespace PokemonTranslator.Api.Middlewares
             {
                  case PokemonNotFoundException:
                  {
-                     context.Response.StatusCode = 404;
+                     context.Response.StatusCode = 204;
                      return Task.CompletedTask;
                  }
                 case HttpRequestException httpRequestException:
