@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Diagnostics;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using PokeApiNet;
@@ -29,7 +30,8 @@ namespace PokemonTranslator.Infrastructure.PokemonCient
             try
             {
                 var pokemonSpecies = await _pokeApiClient.GetResourceAsync<PokemonSpecies>(pokemon.ToLower().Trim());
-                return pokemonSpecies?.MapToPokemonRace();
+                Debug.Assert(pokemonSpecies != null, nameof(pokemonSpecies) + " != null");
+                return pokemonSpecies?.MapToPokemonRace()!;
             }
             catch (HttpRequestException e) when (e.StatusCode == HttpStatusCode.NotFound)
             {

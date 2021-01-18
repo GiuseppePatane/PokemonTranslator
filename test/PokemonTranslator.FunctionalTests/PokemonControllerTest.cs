@@ -19,12 +19,12 @@ namespace PokemonTranslator.FunctionalTests
             new object[]
             {
                 "pikachu",
-                "Whenev'r pikachu cometh across something new, t blasts t with a jolt of electricity. If 't be true thee cometh across a blacken'd b'rry, it’s evidence yond this pokémon did mistake the intensity of its chargeth"
+                "Pikachu yond can generate powerful electricity hath't cheek sacs yond art extra soft and super stretchy."
             },
             new object[]
             {
                 "charizard",
-                "Charizard flies 'round the sky in search of powerful opponents. 't breathes fire of such most wondrous heat yond 't melts aught. However,'t nev'r turns its fiery breath on any opponent weaker than itself."
+                "Charizard flies 'round the sky in search of powerful opponents. 't breathes fire of such most wondrous heat yond 't melts aught. However,  't nev'r turns its fiery breath on any opponent weaker than itself."
             },
         };
 

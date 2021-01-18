@@ -20,7 +20,9 @@ namespace PokemonTranslator.Core.Domain
 
         public static PokemonRace Create(int id, string name, string description)
         {
-            return new(id, name, description);
+            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentNullException(nameof(name));
+            if (id <= 0) throw new ArgumentOutOfRangeException(nameof(id));
+            return new PokemonRace(id, name, description);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace PokemonTranslator.IntegrationTests.Infrastructure.PokemonClient
             new object[]
             {
                 "pikachu",
-                "Whenever PIKACHU comes across something new, it blasts it with a jolt of electricity. If you come across a blackened berry, it’s evidence that this POKéMON mistook the intensity of its charge."
+                "Pikachu that can generate powerful electricity have cheek sacs that are extra soft and super stretchy."
             },
             new object[]
             {
