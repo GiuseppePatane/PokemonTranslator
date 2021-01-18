@@ -5,7 +5,14 @@ The description taken  will then be sent to the [Shakespearean translation  API]
 
 
 
-### Run local with the DotNet CLI
+## Project structure 
+
+![image](https://user-images.githubusercontent.com/13527363/104906023-739a1e00-5983-11eb-9493-038ac5805c11.png)
+
+
+
+## Run local with the DotNet CLI
+
 1. Clone or download this repository to local machine.
 
     ` git clone https://github.com/GiuseppePatane/PokemonTranslator.git` 
@@ -24,7 +31,7 @@ The description taken  will then be sent to the [Shakespearean translation  API]
 
 8. For see the Swagger go with a browser on http://localhost:5000/swagger/index.html
 
-### Run as docker container:
+## Run as docker container:
 
 1. Clone or download this repository to local machine.
 
