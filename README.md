@@ -29,7 +29,7 @@ The description taken  will then be sent to the [Shakespearean translation  API]
 
 7. For test the api `curl -X GET "http://localhost:5000/pokemon/{pokemonName}" -H  "accept: application/json"`
 
-8. For see the Swagger go with a browser on http://localhost:5000/swagger/index.html
+8. For see the Swagger go to http://localhost:5000/swagger/index.html
 
 ## Run as docker container:
 
@@ -49,6 +49,6 @@ The description taken  will then be sent to the [Shakespearean translation  API]
 
 7. For test the api `curl -X GET "http://localhost:5000/pokemon/{pokemonName}" -H  "accept: application/json"`
 
-8. For see the Swagger go with a browser on http://localhost:5000/swagger/index.html
+8. For see the Swagger go to http://localhost:5000/swagger/index.html
 
 
