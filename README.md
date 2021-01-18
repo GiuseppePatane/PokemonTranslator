@@ -1,7 +1,8 @@
 # PokemonTranslator
-This API returns the shekirian translation of a pokemon description.
-For doing that call in the first place the [pokemon api](https://pokeapi.co/) and take from the description List the first element that starts with the name of the pokemon searched.
-if the description list doesn't contain any element with this condition the API will take the first element that contains the pokemon name.
+This API returns the Shakespearean translation of a pokemon description.
+For doing this, call in the first place the [pokemon api](https://pokeapi.co/) and takes from the description List the first element that starts with the name of the pokemon searched. if the descriptions list doesn't contain any element with this condition the API will take the first element that contains the pokemon name.
+The description taken  will then be sent to the [Shakespearean tranlation](https://funtranslations.com/api/shakespeare) api that will return the shakespearean version of the pokemon description.
+
 
 
 
