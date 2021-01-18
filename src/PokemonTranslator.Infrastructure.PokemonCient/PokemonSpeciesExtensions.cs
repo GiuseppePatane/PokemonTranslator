@@ -20,12 +20,12 @@ namespace PokemonTranslator.Infrastructure.PokemonCient
         public static PokemonRace MapToPokemonRace(this PokemonSpecies? pokemonSpecies, string language = "en")
         {
             if (pokemonSpecies == null || pokemonSpecies.Id <= 0) throw new PokemonNotFoundException();
-            var description = ParseFlavorTextEntries(pokemonSpecies?.FlavorTextEntries, pokemonSpecies.Name.ToUpper(),
+            var description = ParseFlavorTextEntries(pokemonSpecies?.FlavorTextEntries, pokemonSpecies?.Name.ToUpper(),
                 language);
             return PokemonRace.Create(pokemonSpecies.Id, pokemonSpecies.Name, description);
         }
 
-        private static string ParseFlavorTextEntries(List<PokemonSpeciesFlavorTexts>? flavorTextsList, string name,
+        private static string ParseFlavorTextEntries(List<PokemonSpeciesFlavorTexts>? flavorTextsList, string? name,
             string language)
         {
             if (flavorTextsList == null || !flavorTextsList.Any()) return string.Empty;

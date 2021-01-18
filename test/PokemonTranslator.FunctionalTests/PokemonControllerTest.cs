@@ -15,26 +15,17 @@ namespace PokemonTranslator.FunctionalTests
     {
         public static readonly object[][] ValidPokemonName =
         {
-            new object[]
-            {
-                "ditto",
-                "Ditto rearranges its cell structureth to transf'rm itself into oth'r shapes.  Howev'r, if 't be true t tries to transf'rm itself into something by relying on its mem'ry, this pokémon manages to receiveth details wrong"
-            },
+            
             new object[]
             {
                 "pikachu",
-                "Whenev'r pikachu cometh across something new, t blasts t with a jolt of electricity.  If 't be true thee cometh across a blacken'd b'rry, it’s evidence yond this pokémon did mistake the intensity of its chargeth"
+                "Whenev'r pikachu cometh across something new, t blasts t with a jolt of electricity. If 't be true thee cometh across a blacken'd b'rry, it’s evidence yond this pokémon did mistake the intensity of its chargeth"
             },
             new object[]
             {
                 "charizard",
-                "Charizard flies 'round the sky in searcheth of pow'rful opponents.  T breathes fireth of such most wondrous heateth yond t melts aught.  Howev'r, t nev'r turns its fi'ry breath on any opponent weak'r than itself"
+                "Charizard flies 'round the sky in search of powerful opponents. 't breathes fire of such most wondrous heat yond 't melts aught. However,'t nev'r turns its fiery breath on any opponent weaker than itself."
             },
-            new object[]
-            {
-                "bulbasaur",
-                "Bulbasaur can beest seen napping in bright sunlight.  Th're is a se'd on its backeth.  By soaking up the sun’s rays, the se'd grows progressively larg'r"
-            }
         };
 
         private readonly HttpClient _client;
